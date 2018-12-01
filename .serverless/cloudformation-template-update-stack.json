@@ -118,6 +118,16 @@
                 {
                   "Effect": "Allow",
                   "Action": [
+                    "xray:PutTraceSegments",
+                    "xray:PutTelemetryRecords"
+                  ],
+                  "Resource": [
+                    "*"
+                  ]
+                },
+                {
+                  "Effect": "Allow",
+                  "Action": [
                     "kinesis:GetRecords",
                     "kinesis:GetShardIterator",
                     "kinesis:DescribeStream",
@@ -159,7 +169,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/workshop-rami/dev/1543674162892-2018-12-01T14:22:42.892Z/workshop-rami.zip"
+          "S3Key": "serverless/workshop-rami/dev/1543677585123-2018-12-01T15:19:45.123Z/workshop-rami.zip"
         },
         "FunctionName": "workshop-rami-dev-get-index",
         "Handler": "functions/get-index.handler",
@@ -175,6 +185,7 @@
         "Environment": {
           "Variables": {
             "log_level": "DEBUG",
+            "STAGE": "dev",
             "restaurants_api": {
               "Fn::Join": [
                 "",
@@ -204,6 +215,9 @@
               ]
             }
           }
+        },
+        "TracingConfig": {
+          "Mode": "Active"
         }
       },
       "DependsOn": [
@@ -211,14 +225,14 @@
         "IamRoleLambdaExecution"
       ]
     },
-    "GetDashindexLambdaVersionrW4iALpBo5SpAvRILCf7nf2mGH2IcYcdBP3NnuSgg": {
+    "GetDashindexLambdaVersion72jJ0sEq9YMQIOo88GElIZQTTewyGaX53IiHXTXLaw": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "GetDashindexLambdaFunction"
         },
-        "CodeSha256": "YKSZvSa59meisXaWZMeKhu+FtRuPihJsVjSRxxFAztA="
+        "CodeSha256": "ImMqXS7enXr5flrZR65HDfbMtAIMVmxux1NVLRqVrcs="
       }
     },
     "GetDashrestaurantsLambdaFunction": {
@@ -228,7 +242,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/workshop-rami/dev/1543674162892-2018-12-01T14:22:42.892Z/workshop-rami.zip"
+          "S3Key": "serverless/workshop-rami/dev/1543677585123-2018-12-01T15:19:45.123Z/workshop-rami.zip"
         },
         "FunctionName": "workshop-rami-dev-get-restaurants",
         "Handler": "functions/get-restaurants.handler",
@@ -244,10 +258,14 @@
         "Environment": {
           "Variables": {
             "log_level": "DEBUG",
+            "STAGE": "dev",
             "restaurants_table": {
               "Ref": "restaurantsTable"
             }
           }
+        },
+        "TracingConfig": {
+          "Mode": "Active"
         }
       },
       "DependsOn": [
@@ -255,14 +273,14 @@
         "GetDashrestaurantsLogGroup"
       ]
     },
-    "GetDashrestaurantsLambdaVersionGoSyRGKGSV25kbUesDMMamwiZpPzOfY3O3EX72HEgA": {
+    "GetDashrestaurantsLambdaVersionlMyzLoaroGX80a4lrgkEEXRIh9MFyw8dxKz4t4rNDg": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "GetDashrestaurantsLambdaFunction"
         },
-        "CodeSha256": "YKSZvSa59meisXaWZMeKhu+FtRuPihJsVjSRxxFAztA="
+        "CodeSha256": "ImMqXS7enXr5flrZR65HDfbMtAIMVmxux1NVLRqVrcs="
       }
     },
     "SearchDashrestaurantsLambdaFunction": {
@@ -272,7 +290,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/workshop-rami/dev/1543674162892-2018-12-01T14:22:42.892Z/workshop-rami.zip"
+          "S3Key": "serverless/workshop-rami/dev/1543677585123-2018-12-01T15:19:45.123Z/workshop-rami.zip"
         },
         "FunctionName": "workshop-rami-dev-search-restaurants",
         "Handler": "functions/search-restaurants.handler",
@@ -288,10 +306,14 @@
         "Environment": {
           "Variables": {
             "log_level": "DEBUG",
+            "STAGE": "dev",
             "restaurants_table": {
               "Ref": "restaurantsTable"
             }
           }
+        },
+        "TracingConfig": {
+          "Mode": "Active"
         }
       },
       "DependsOn": [
@@ -299,14 +321,14 @@
         "SearchDashrestaurantsLogGroup"
       ]
     },
-    "SearchDashrestaurantsLambdaVersionxaPnR0shIYiCPMUiUzqpACKUt4VD0gWeMBiOEeAliM": {
+    "SearchDashrestaurantsLambdaVersionndhwekBaDLCSYBFSIXJNwPkjwZvqLqpHPZbNGeWAkDM": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "SearchDashrestaurantsLambdaFunction"
         },
-        "CodeSha256": "YKSZvSa59meisXaWZMeKhu+FtRuPihJsVjSRxxFAztA="
+        "CodeSha256": "ImMqXS7enXr5flrZR65HDfbMtAIMVmxux1NVLRqVrcs="
       }
     },
     "PlaceDashorderLambdaFunction": {
@@ -316,7 +338,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/workshop-rami/dev/1543674162892-2018-12-01T14:22:42.892Z/workshop-rami.zip"
+          "S3Key": "serverless/workshop-rami/dev/1543677585123-2018-12-01T15:19:45.123Z/workshop-rami.zip"
         },
         "FunctionName": "workshop-rami-dev-place-order",
         "Handler": "functions/place-order.handler",
@@ -332,10 +354,14 @@
         "Environment": {
           "Variables": {
             "log_level": "DEBUG",
+            "STAGE": "dev",
             "order_events_stream": {
               "Ref": "orderEventsStream"
             }
           }
+        },
+        "TracingConfig": {
+          "Mode": "Active"
         }
       },
       "DependsOn": [
@@ -343,14 +369,14 @@
         "PlaceDashorderLogGroup"
       ]
     },
-    "PlaceDashorderLambdaVersionne3M1rDiq2CXHm2qA0Vruzg66ZgKp5FWFvWciD7rZM": {
+    "PlaceDashorderLambdaVersionfLValTxDR2FmKekiCjhEDAI7LKf2gAzmI4jDhvBoa0": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "PlaceDashorderLambdaFunction"
         },
-        "CodeSha256": "YKSZvSa59meisXaWZMeKhu+FtRuPihJsVjSRxxFAztA="
+        "CodeSha256": "ImMqXS7enXr5flrZR65HDfbMtAIMVmxux1NVLRqVrcs="
       }
     },
     "NotifyDashrestaurantLambdaFunction": {
@@ -360,7 +386,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/workshop-rami/dev/1543674162892-2018-12-01T14:22:42.892Z/workshop-rami.zip"
+          "S3Key": "serverless/workshop-rami/dev/1543677585123-2018-12-01T15:19:45.123Z/workshop-rami.zip"
         },
         "FunctionName": "workshop-rami-dev-notify-restaurant",
         "Handler": "functions/notify-restaurant.handler",
@@ -376,6 +402,7 @@
         "Environment": {
           "Variables": {
             "log_level": "DEBUG",
+            "STAGE": "dev",
             "order_events_stream": {
               "Ref": "orderEventsStream"
             },
@@ -383,6 +410,9 @@
               "Ref": "restaurantNotificationTopic"
             }
           }
+        },
+        "TracingConfig": {
+          "Mode": "Active"
         }
       },
       "DependsOn": [
@@ -390,14 +420,14 @@
         "NotifyDashrestaurantLogGroup"
       ]
     },
-    "NotifyDashrestaurantLambdaVersion6XGF4hbK1svVelVDregwGHOTXaPHPQ1Bj4cqIZLH5xU": {
+    "NotifyDashrestaurantLambdaVersionm0eMPHQsOh3msp7hDAElcUtyVatXSf6ACrA5POoTfw": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "NotifyDashrestaurantLambdaFunction"
         },
-        "CodeSha256": "YKSZvSa59meisXaWZMeKhu+FtRuPihJsVjSRxxFAztA="
+        "CodeSha256": "ImMqXS7enXr5flrZR65HDfbMtAIMVmxux1NVLRqVrcs="
       }
     },
     "ApiGatewayRestApi": {
@@ -628,7 +658,7 @@
         "MethodResponses": []
       }
     },
-    "ApiGatewayDeployment1543674163131": {
+    "ApiGatewayDeployment1543677585561": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -900,6 +930,16 @@
                 },
                 {
                   "Effect": "Allow",
+                  "Action": [
+                    "xray:PutTraceSegments",
+                    "xray:PutTelemetryRecords"
+                  ],
+                  "Resource": [
+                    "*"
+                  ]
+                },
+                {
+                  "Effect": "Allow",
                   "Action": "dynamodb:scan",
                   "Resource": {
                     "Fn::GetAtt": [
@@ -978,6 +1018,16 @@
                 },
                 {
                   "Effect": "Allow",
+                  "Action": [
+                    "xray:PutTraceSegments",
+                    "xray:PutTelemetryRecords"
+                  ],
+                  "Resource": [
+                    "*"
+                  ]
+                },
+                {
+                  "Effect": "Allow",
                   "Action": "dynamodb:scan",
                   "Resource": {
                     "Fn::GetAtt": [
@@ -1052,6 +1102,16 @@
                     {
                       "Fn::Sub": "arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/workshop-rami-dev-place-order:*:*"
                     }
+                  ]
+                },
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "xray:PutTraceSegments",
+                    "xray:PutTelemetryRecords"
+                  ],
+                  "Resource": [
+                    "*"
                   ]
                 },
                 {
@@ -1151,6 +1211,16 @@
                 },
                 {
                   "Effect": "Allow",
+                  "Action": [
+                    "xray:PutTraceSegments",
+                    "xray:PutTelemetryRecords"
+                  ],
+                  "Resource": [
+                    "*"
+                  ]
+                },
+                {
+                  "Effect": "Allow",
                   "Action": "kinesis:PutRecord",
                   "Resource": {
                     "Fn::GetAtt": [
@@ -1244,31 +1314,31 @@
     "GetDashindexLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "GetDashindexLambdaVersionrW4iALpBo5SpAvRILCf7nf2mGH2IcYcdBP3NnuSgg"
+        "Ref": "GetDashindexLambdaVersion72jJ0sEq9YMQIOo88GElIZQTTewyGaX53IiHXTXLaw"
       }
     },
     "GetDashrestaurantsLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "GetDashrestaurantsLambdaVersionGoSyRGKGSV25kbUesDMMamwiZpPzOfY3O3EX72HEgA"
+        "Ref": "GetDashrestaurantsLambdaVersionlMyzLoaroGX80a4lrgkEEXRIh9MFyw8dxKz4t4rNDg"
       }
     },
     "SearchDashrestaurantsLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "SearchDashrestaurantsLambdaVersionxaPnR0shIYiCPMUiUzqpACKUt4VD0gWeMBiOEeAliM"
+        "Ref": "SearchDashrestaurantsLambdaVersionndhwekBaDLCSYBFSIXJNwPkjwZvqLqpHPZbNGeWAkDM"
       }
     },
     "PlaceDashorderLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "PlaceDashorderLambdaVersionne3M1rDiq2CXHm2qA0Vruzg66ZgKp5FWFvWciD7rZM"
+        "Ref": "PlaceDashorderLambdaVersionfLValTxDR2FmKekiCjhEDAI7LKf2gAzmI4jDhvBoa0"
       }
     },
     "NotifyDashrestaurantLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "NotifyDashrestaurantLambdaVersion6XGF4hbK1svVelVDregwGHOTXaPHPQ1Bj4cqIZLH5xU"
+        "Ref": "NotifyDashrestaurantLambdaVersionm0eMPHQsOh3msp7hDAElcUtyVatXSf6ACrA5POoTfw"
       }
     },
     "ServiceEndpoint": {
