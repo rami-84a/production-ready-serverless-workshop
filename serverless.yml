@@ -148,7 +148,6 @@ resources:
       Type: AWS::Kinesis::Stream
       Properties:
         Name: ${ssm:/${self:service}/${self:provider.stage}/stream_name}
-        # Name: ${ssm:/workshop-rami/dev/stream_name}
         ShardCount: 1
 
     restaurantNotificationTopic:
@@ -160,7 +159,7 @@ resources:
     mySubscription:
       Type: AWS::SNS::Subscription
       Properties:
-        Endpoint: rami.ammari1@gmail.com
+        Endpoint: <Your E-mail>
         Protocol: email
         TopicArn: 
           Ref: restaurantNotificationTopic            
